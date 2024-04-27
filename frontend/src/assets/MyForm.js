@@ -1,8 +1,21 @@
 // import React, { useEffect, useState } from "react";
 // import { useNavigate } from 'react-router-dom'
 import React, { useState } from "react";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const MyForm = () => {
+    const notify = () => toast.success('Registered Successfully!', {
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+       
+        });;
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [summary, setsummary] = useState("");
@@ -27,10 +40,15 @@ const MyForm = () => {
        console.warn(result);
         localStorage.setItem("user", JSON.stringify(result.result))
         localStorage.setItem("token", JSON.stringify(result.auth))
-      
+       
             setName("");
             setEmail("");
             setsummary("");
+            notify();
+        
+          
+        
+            
            
              
         
@@ -51,6 +69,19 @@ const MyForm = () => {
                 value={summary || ""} onChange={(e) => setsummary(e.target.value)}
             />
             <button onClick={collectData} className="appButton" type="button">Submit</button>
+            <ToastContainer
+position="top-center"
+autoClose={3000}
+hideProgressBar={false}
+newestOnTop={false}
+closeOnClick
+rtl={false}
+pauseOnFocusLoss
+draggable
+pauseOnHover
+theme="light"
+
+/>
         </div>
     )
 }

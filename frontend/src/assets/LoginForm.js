@@ -1,6 +1,23 @@
 import React, { useState } from 'react';
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 function LoginForm() {
+  const notify = () => toast.success('Logged in!', {
+    position: "top-center",
+    autoClose: 3000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "dark",
+   
+    });;
+
+
+
+
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -9,7 +26,7 @@ function LoginForm() {
     // Handle form submission here
   };
 
-  return (
+  return (<div>
     <form onSubmit={handleSubmit}>
       <label htmlFor="email">Email:</label>
       <input
@@ -27,8 +44,23 @@ function LoginForm() {
         onChange={(event) => setPassword(event.target.value)}
       />
       <br />
-      <button type="submit">Login</button>
+      <button type="submit" onClick={notify} >Login</button>
+      
     </form>
+    <ToastContainer
+position="top-center"
+autoClose={3000}
+hideProgressBar={false}
+newestOnTop={false}
+closeOnClick
+rtl={false}
+pauseOnFocusLoss
+draggable
+pauseOnHover
+theme="light"
+
+/>
+    </div>
   );
 }
 

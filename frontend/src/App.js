@@ -8,6 +8,7 @@ function App() {
 <MyForm/>
 <br />
      <LoginForm/>
+     
    </div>
     
   );
