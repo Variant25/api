@@ -24,10 +24,17 @@ const MyForm = () => {
             }
         });
         result = await result.json();
-        console.warn(result);
+       console.warn(result);
         localStorage.setItem("user", JSON.stringify(result.result))
         localStorage.setItem("token", JSON.stringify(result.auth))
-
+      
+            setName("");
+            setEmail("");
+            setsummary("");
+           
+             
+        
+       
         // navigate('/')
     }
 
@@ -35,13 +42,13 @@ const MyForm = () => {
         <div className="register">
             <h1>Register</h1>
             <input className="inputBox" type="text" placeholder="Enter Name"
-                value={name} onChange={(e) => setName(e.target.value)}
+                value={name || ""} onChange={(e) => setName(e.target.value)}
             />
             <input className="inputBox" type="text" placeholder="Enter Email"
-                value={email} onChange={(e) => setEmail(e.target.value)}
+                value={email || ""} onChange={(e) => setEmail(e.target.value)}
             />
             <input className="inputBox" type="text" placeholder="Enter summary"
-                value={summary} onChange={(e) => setsummary(e.target.value)}
+                value={summary || ""} onChange={(e) => setsummary(e.target.value)}
             />
             <button onClick={collectData} className="appButton" type="button">Submit</button>
         </div>
